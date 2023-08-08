@@ -72,6 +72,8 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- Track coding time
+  'wakatime/vim-wakatime',
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -437,7 +439,14 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {
+    init_options = {
+      preferences = {
+        importModuleSpecifierPreference = 'relative',
+        importModuleSpecifierEnding = 'minimal',
+      }
+    }
+  },
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
